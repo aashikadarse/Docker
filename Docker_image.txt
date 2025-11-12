@@ -1,0 +1,60 @@
+What is a Docker Image?
+Think of an image like a blueprint or template 
+ It contains everything needed to run an application, such as:
+                                                              The code or app itself
+                                                              Dependencies (libraries, tools)
+                                                              Configuration (environment setup)
+                                                              Operating system layer
+
+Example:
+
+A PostgreSQL image = PostgreSQL software + Linux + config
+
+A Python image = Python + libraries + basic OS
+
+So you create a container from an image (like making copies of a design).
+
+----------------------------------------------------------
+1->docker run postgres
+
+2->docker run -e POSTGRES_PASSWORD=password postgres
+(It downloads and runs PostgreSQL (a database) in a Docker container.
+So, instead of installing PostgreSQL manually on your PC, Docker sets it up inside a container — quickly and cleanly.)
+
+Part	                                              Meaning
+docker run	                                Tells Docker to create and start a new container
+-e POSTGRES_PASSWORD=password	              This sets an environment variable inside the container 
+                                            (in this case, it creates the PostgreSQL admin password = password)
+postgres	                                  This is the image name you want to use (Docker will pull it from Docker Hub if not already downloaded)
+
+3->docker run -d -e POSTGRES_PASSWORD=password postgres
+-d means detached mode.
+It tells Docker to run the container in the background — not on your screen.
+It returns a unique ID that Docker gives to every container you run.
+
+When you don’t use -d:
+                       The container runs in your terminal
+                       You see all the logs/output (it takes over your screen)
+                       You can’t type new commands until you stop it
+
+When you use -d:
+                 The container starts quietly in the background
+                 You get back control of your terminal immediately 
+                 You can still check it later with:
+                                                    docker ps
+                                                 (to see running containers)
+
+custom image NAMES
+------------------
+docker run -d -e POSTGRES_PASSWORD=password --name bullseye_container postgres:bullseye 
+o/p:-d682a71061b609484bcd93c1489ead1f40c7085fb8a6407fca8ee98f6ecc3b33
+                                                                                                      -----------------------
+CONTAINER ID   IMAGE               COMMAND                  CREATED          STATUS          PORTS    |  NAMES              |
+d682a71061b6   postgres:bullseye   "docker-entrypoint.s…"   10 seconds ago   Up 10 seconds   5432/tcp | bullseye_container  |
+                                                                                                      ----------------------
+6c31cbdea391   postgres:bullseye   "docker-entrypoint.s…"   6 minutes ago    Up 6 minutes    5432/tcp   happy_darwin
+f9f51b51d5f5   postgres            "docker-entrypoint.s…"   34 minutes ago   Up 34 minutes   5432/tcp   angry_goodall
+
+Bullseye = Codename for Debian 11,is a popular Linux distribution.
+          Each version of Debian has a nickname (based on Toy Story movie characters ).
+used in Docker image tags to tell which Linux base it’s built on.
