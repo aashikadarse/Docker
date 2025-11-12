@@ -1,0 +1,35 @@
+Download Docker Desktop
+-----------------------
+Go to the official site 👉 https://www.docker.com/products/docker-desktop
+Click Download for Windows
+Install Docker Desktop
+Open the downloaded .exe file
+Follow the installer steps → keep WSL 2 selected 
+Finish installation and restart your system if asked
+
+Start Docker Desktop
+Search for Docker Desktop in the Start menu
+create an account
+Open it → it will start the Docker engine
+Wait until you see “Docker Desktop is running” (in green)
+
+Verify Installation
+Open Command Prompt (cmd) or PowerShell, and run:
+docker --version
+If it shows something like:
+Docker version 27.0.3, build xxxxxxx
+
+Docker is successfully installed!
+----------------------------------------
+Run a Test Container
+Open Command Prompt or PowerShell
+
+Type this:
+docker run hello-world
+
+Docker will:
+Check if you already have the image
+If not, it downloads it from Docker Hub
+Then creates and runs a container that prints “Hello from Docker!”
+
+You’ll see a message confirming Docker works properly.
