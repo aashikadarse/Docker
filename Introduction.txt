@@ -1,0 +1,137 @@
+DOCKER:
+------
+Docker as  a solution for the containers management -it is an open source technology 
+                                                     that allows us to manage containers 
+                                                     in vert simple way.
+Through Docker , we can create,deploy and run applications through the use of containers.
+Means it provides a series of tools that allow us to manage the lifecycle of the container.
+What does "Container" mean in Docker?
+
+A container is basically a small, isolated box inside your computer that contains everything your application needs to run.
+  ---------
+Imagine this example:You made a Python app that needs:
+                                                         Python 3.10
+                                                         Flask library
+                                                         Some files and environment settings
+If you run it on someone else’s computer — it might fail because:They have Python 3.12
+                                                                 Flask is not installed
+                                                                 Different OS
+                                                        Problem: Different setups break your app.
+
+Solution (Container):
+Docker puts your app + Python + Flask + settings into one container — like putting your project into a sealed box .
+Now, that box will run the same way anywhere — on any computer, any server, any cloud.
+In simple words:
+A container is a lightweight, portable, isolated environment that runs your application along with everything it needs.
+
+
+CI/CD pipeline:
+What is CI/CD?
+
+CI/CD stands for:
+                CI → Continuous Integration
+                CD → Continuous Delivery / Continuous Deployment
+
+These are DevOps practices that help developers:
+build code faster,
+test automatically,
+and deploy updates safely.
+
+Continuous Integration (CI):
+-----------------------
+Continuous Integration means developers frequently add (integrate) their code into a shared repository (like GitHub).
+Every time they add new code, it is:
+                                   Automatically built (compiled),
+                                   Automatically tested,
+                                   Merge.
+                                   If something breaks, they know immediately 
+
+Example: Imagine 5 developers working on one project.
+         Without CI:
+                     Everyone codes separately for weeks.
+                     When merging, everything crashes 
+         With CI:
+                 Everyone pushes small changes daily.
+                 Docker or Jenkins automatically builds ,tests and merge code each time.
+                 Errors are caught early .
+
+Continuous Delivery / Continuous Deployment (CD):
+------------------------------------------------
+Once the app is tested (via CI), CD makes sure it can be automatically delivered or deployed to servers.
+
+There are two types:
+Type	                             Meaning
+Continuous Delivery	             Automatic releaseto the repository
+                                 
+Continuous Deployment	           Automatic production deployment
+
+Example:
+       When you push code to GitHub, it automatically:
+                                                      builds,
+                                                      tests,
+                                                      deploys to a live website!
+CI/CD Together:They work like a pipeline:
+--------------
+Code → Build → Test → Deploy → Monitor
+
+Simple Flow ->   Developer commits code to GitHub.
+                               |
+                               V
+                 CI process builds and tests automatically.
+                               |
+                               V
+                If tests pass → CD process deploys new version.
+
+      
+CI/CD + DevOps lifecycle:
+--------------------------
+                      ┌───────────────────────┐
+                      │        PLAN           │
+                      │ (Define goals, tasks) │
+                      └──────────┬────────────┘
+                                 │
+                                 ▼
+                      ┌───────────────────────┐
+                      │        CODE           │
+                      │ (Write application)   │
+                      └──────────┬────────────┘
+                                 │
+                                 ▼
+                      ┌───────────────────────┐
+                      │        BUILD          │
+                      │ (Compile & create app)│
+                      └──────────┬────────────┘
+                                 │
+                                 ▼
+                      ┌───────────────────────┐
+                      │        TEST           │
+                      │ (Check for bugs)      │
+                      └──────────┬────────────┘
+                                 │
+                                 ▼
+                      ┌───────────────────────┐
+                      │       RELEASE         │
+                      │ (Prepare final build) │
+                      └──────────┬────────────┘
+                                 │
+                                 ▼
+                      ┌───────────────────────┐
+                      │       DEPLOY          │
+                      │ (Deliver to servers)  │
+                      └──────────┬────────────┘
+                                 │
+                                 ▼
+                      ┌───────────────────────┐
+                      │       OPERATE         │
+                      │ (Run & manage system) │
+                      └──────────┬────────────┘
+                                 │
+                                 ▼
+                      ┌───────────────────────┐
+                      │       MONITOR         │
+                      │ (Observe performance) │
+                      └──────────┬────────────┘
+                                 │
+                                 ▼
+                            🔁 BACK TO PLAN 🔁
+  
