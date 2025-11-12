@@ -1,0 +1,26 @@
+Restarting docker container
+---------------------------
+
+To restart a Docker container = stop it and start it again (like rebooting a small virtual machine).
+Command:
+docker restart <container_name_or_id>
+Example:
+docker restart vigilant_mestorf
+
+This stops and starts that container again.
+You can also stop and start separately:
+docker stop <container_name_or_id>
+docker start <container_name_or_id>
+
+Example:
+docker stop ubuntu_container
+docker start ubuntu_container
+
+To check its status after restarting:
+docker ps -a
+
+If it shows Up, it’s running
+If it shows Exited, it stopped again (maybe because there’s nothing running inside it)
+
+
+
