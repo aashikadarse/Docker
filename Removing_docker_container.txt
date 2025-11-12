@@ -1,0 +1,29 @@
+-> docker ps -a 
+   gives the list of all the set of containers on the computer
+0/p:
+   CONTAINER ID   IMAGE               COMMAND                  CREATED          STATUS                      PORTS      NAMES
+d682a71061b6   postgres:bullseye   "docker-entrypoint.s…"   13 minutes ago   Up 13 minutes               5432/tcp   bullseye_container
+6c31cbdea391   postgres:bullseye   "docker-entrypoint.s…"   19 minutes ago   Up 19 minutes               5432/tcp   happy_darwin
+f9f51b51d5f5   postgres            "docker-entrypoint.s…"   47 minutes ago   Up 47 minutes               5432/tcp   angry_goodall
+                                                                             ---------------------------
+004912bd2c42   postgres            "docker-entrypoint.s…"   48 minutes ago  | Exited (0) 48 minutes ago |            epic_shockley
+1cb14e7b7085   postgres            "docker-entrypoint.s…"   2 hours ago     | Exited (1) 2 hours ago    |            thirsty_wu
+af0853c28ebd   hello-world         "/hello"                 3 hours ago     | Exited (0) 3 hours ago    |            zen_hoover
+                                                                            -----------------------------
+                                                                      Those you’re seeing are non-active (stopped) containers.
+
+How to manage and free up memory spcae ?
+we can delete by names or by ID
+
+Remove one container:
+->docker rm <container_id_or_name>
+  docker rm 004912bd2c42
+
+->docker rm thirsty_wu zen_hoover
+
+Remove active container forcefully - it turns offand deletes directly
+->docker rm -f ID or name 
+
+Remove all stopped containers:
+->docker container prune
+(You’ll be asked to confirm with y)
