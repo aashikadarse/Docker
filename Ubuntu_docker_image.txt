@@ -1,0 +1,21 @@
+->docker run -d ubuntu:rolling
+  Part	                                   Meaning
+docker run	                        This tells Docker to create and start a new container.
+
+-d	                                Means detached mode → runs the container in the background, not attached to your terminal.
+                                    You’ll just see a container ID and can keep using your terminal.
+
+ubuntu:rolling	                    This is the image name and tag.
+                                    ubuntu = the base operating system image.
+                                    rolling = the tag that refers to the latest rolling release version of Ubuntu (a continuously updated version).
+
+
+->docker ps -a
+
+CONTAINER ID   IMAGE               COMMAND                  CREATED             STATUS                      PORTS      NAMES
+55cba0db9e0c   ubuntu:rolling      "/bin/bash"              37 seconds ago      Exited (0) 37 seconds ago              vigilant_mestorf
+6c31cbdea391   postgres:bullseye   "docker-entrypoint.s…"   About an hour ago   Up About an hour            5432/tcp   happy_darwin
+f9f51b51d5f5   postgres            "docker-entrypoint.s…"   2 hours ago         Up 2 hours                  5432/tcp   angry_goodall
+
+If you open a terminal window and don’t type anything, it closes automatically.
+Same here — Ubuntu started, saw no command to run, and said “Okay, I’m done!” → Exited (0)
