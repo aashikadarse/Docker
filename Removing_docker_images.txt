@@ -1,0 +1,31 @@
+Removing Docker Images
+--------------------
+we can't delete by imageID 
+we can delete by repository + Tag 
+
+C:\Users\Exaze>docker images
+REPOSITORY    TAG        IMAGE ID       CREATED        SIZE
+postgres      latest     41fc5342eefb   8 days ago     643MB
+hello-world   latest     f7931603f70e   3 months ago   20.3kB
+postgres      bullseye   724a6dfcc90f   5 months ago   605MB
+
+C:\Users\Exaze>docker rmi hello-world:latest
+Untagged: hello-world:latest
+Deleted: sha256:f7931603f70e13dbd844253370742c4fc4202d290c80442b2e68706d8f33ce26
+
+You can’t delete an image if any container (running or stopped) is still using it.
+That’s because the container depends on the image’s data.
+
+If you try, you’ll get an error like:
+Error response from daemon: conflict: unable to remove repository reference "postgres" (must be forced) - container .
+
+To Delete in Correct Order
+---------------------------
+->Stop the container (if it’s running):
+  docker stop <container_name_or_id>
+
+->Remove the container:
+  docker rm <container_name_or_id>
+
+->Now remove the image:
+ docker rmi <image_name_or_id>
