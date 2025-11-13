@@ -1,0 +1,27 @@
+Docker Rename
+-------------
+To change the name of an existing container (without removing or recreating it).
+
+Syntax:
+docker rename <old_container_name> <new_container_name>
+
+Example:
+Suppose you have a container named amazing_poincare (from your earlier Redis container):
+docker rename amazing_poincare redis_server
+
+
+Now, when you run:
+
+docker ps
+You’ll see :
+
+CONTAINER ID   IMAGE     COMMAND                  STATUS         NAMES
+0a3218bbd607   redis     "docker-entrypoint.s…"   Up 3 minutes   redis_server
+
+If you forget the current name
+
+You can check:
+docker ps -a
+
+Then rename it:
+docker rename old_name new_name
