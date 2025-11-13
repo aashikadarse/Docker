@@ -1,0 +1,66 @@
+Docker — Saving and Importing Images from a compressed file
+-----------------------------------------------------------
+Saving a Docker Image (Backup)
+-----------------------
+To export (save) a Docker image from your system 
+so it can be stored, shared, or moved to another machine.
+
+Command:
+docker save <image_name>:<tag> | gzip > <path>/<filename>.tar.gz
+
+Example:
+docker save redis:latest | gzip > /user/aa/desktop/images/myredis.tar.gz
+
+Explanation:
+Part	                                                                 Description
+docker save	                                                       Saves (exports) the specified Docker image as a .tar file.
+redis:latest	                                                     The image name and tag you want to save.
+gzip                                                               used for compression
+>                     	                                           Redirects the output to a file.
+/user/aa/desktop/images/myredis.tar.gz	                           The path and name where the compressed image will be saved.
+
+
+Output:
+The image will be saved as a compressed file → myredis.tar.gz
+
+Use Case:
+To back up images.
+To transfer images to another system without using Docker Hub.
+
+Importing (Loading) a Docker Image from a Compressed File
+Purpose:
+----------------------------------------------------------
+To load (import) a previously saved Docker image file back into Docker.
+Command:
+gunzip -c <path>/<filename>.tar.gz | docker load
+docker load < /path/filename
+
+Example:
+gunzip -c /user/aa/desktop/images/myredis.tar.gz | docker load
+docker load < /users/aa/Desktop/my_image/myubuntu.tar.gz
+
+Explanation:
+Part	                                      Description
+gunzip -c	                                  Decompresses the .tar.gz file and sends the output to the next command.
+myredis.tar.gz	                            The compressed Docker image file you want to import.
+docker load	                                Imports the image into Docker (it appears in docker images list).
+
+Result:
+After importing, you can verify:
+docker images
+
+Output will show:
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+redis        latest    5c7c0445ed86   9 days ago     200MB
+
+Alternative (without pipe):
+--------------------------
+If the image is not compressed:
+docker load -i myredis.tar
+
+
+Action	                                     Command	                                 File Type
+Save (export) image                       	docker save redis:latest > redis.tar	     .tar
+Save (compressed) image	                    docker save redis:latest	            gzip > redis.tar.gz`
+Load (import) uncompressed	                docker load -i redis.tar	                   .tar
+Load (import) compressed	                  `gunzip -c redis.tar.gz	                docker load`
