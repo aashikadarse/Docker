@@ -1,0 +1,33 @@
+You must stop containers before removing their images
+Why?
+A running container is created from an image.
+As long as the container is using that image, Docker will not allow you to delete the image (you’ll get an error like:
+"image is being used by running container").
+
+So the correct cleanup order is:
+🔹 Step 1: Stop running containers
+docker stop $(docker ps -q)
+
+docker ps -q lists all running container IDs.
+
+
+In Powershell:
+🔹 Step 2: Remove all containers (stopped or exited)
+docker rm $(docker ps -aq)
+
+
+-a = all containers, even stopped ones
+-q = only container IDs
+
+
+🔹 Step 3: Now remove all images
+docker rmi $(docker images )
+
+In cmd:
+The $() syntax is Linux/PowerShell syntax, not supported in Windows CMD.
+That’s why CMD passes it literally to Docker, and Docker thinks you’re giving a wrong argument.
+
+Alternate (simpler) way
+If you just want to remove unused or dangling images:
+                                                     docker image prune -a
+                                                     Then type y to confirm.
