@@ -1,0 +1,47 @@
+Searching for Docker Images from Terminal
+-----------------------------------------
+Basic command
+docker search <image_name>
+Example:
+docker search redis
+
+It shows:
+NAME → image name
+DESCRIPTION → short info about the image
+STARS → number of likes from users (popularity)
+OFFICIAL → [OK] if it’s an official verified image
+AUTOMATED (optional column) → if image builds automatically
+
+Limit results
+-------------
+If you only want a few results, use:
+
+docker search --limit=3 redis
+Shows only top 3 results.
+
+Filter by stars (popularity)
+----------------------------
+If you want only popular images with at least 500 stars:
+docker search --filter stars=500 redis
+
+Shows only images having ≥ 500 stars.
+You can combine both:
+docker search --filter stars=500 --limit=2 redis
+
+Format the output (--format)
+You can customize what you want to see from the search results using Go-style placeholders.
+Example:
+docker search redis --format "Name: {{.Name}} | Stars: {{.StarCount}} | Official: {{.IsOfficial}}"
+
+Output:
+Name: redis | Stars: 13454 | Official: [OK]
+Name: redis/redis-stack-server | Stars: 98 | Official:
+Name: redis/redis-stack | Stars: 156 | Official:
+
+Common placeholders for --format
+Placeholder	Meaning
+{{.Name}}	Image name
+{{.Description}}	Short image description
+{{.StarCount}}	Number of stars
+{{.IsOfficial}}	[OK] if official
+{{.IsAutomated}}	[OK] if automated build
