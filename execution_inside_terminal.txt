@@ -1,0 +1,41 @@
+Execution of commands inside a running container
+-------------------------------------------------
+When you “run” a container, it’s like starting a mini-computer inside your system — it has its own terminal, files, and environment.
+If that container is already running, you can execute (run) commands inside it just like you would on your own system.
+
+Ways to execute commands inside a running container:
+There are mainly two ways:
+                          Option 1: Attach directly to its terminal
+                                    If you want to interact with it like a normal shell (Linux prompt):
+                                    docker exec -it <container_id_or_name> bash
+                          Example:docker exec -it amazing_poincare bash
+
+exec → means “execute a command inside the container”
+-i → interactive mode (lets you type commands)
+-t → allocates a terminal (gives you a nice prompt)
+bash → the command you want to run (opens a shell)
+
+Then you’ll see something like:
+/#
+Now you are inside the container, and you can run commands like:
+                                                                pwd
+                                                                ls
+                                                                cat /etc/os-release
+
+To exit, type:exit
+
+Option 2: Run a single command without entering the shell
+          You can run one command inside a running container directly from your host terminal.
+
+Example:
+docker exec amazing_poincare ls /data
+
+This just runs the command and shows the output, without entering the shell.
+
+Common Commands to Try Inside a Container
+Command          	     Description
+pwd	                   Shows current directory inside container
+ls	                   Lists files
+cat /etc/os-release	   Shows OS info
+ps aux	               Shows running processes inside container
+exit	                 Leaves the container shell
