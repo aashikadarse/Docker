@@ -1,0 +1,55 @@
+Remove multiple Containers
+---------------------------
+Containers take up system resources (CPU, RAM, disk).
+After testing or running apps, we often stop them.
+Removing unused (stopped) containers helps keep Docker clean and fast.
+
+ See All Containers
+ ------------------
+docker ps -a
+Shows all containers (running + stopped).
+
+Stop Running Containers
+-----------------------
+Before removing, first stop them:
+docker stop <container_id_1> <container_id_2>
+
+Example:
+docker stop 3230506cc0fa 14e4303e9199
+
+Remove Multiple Containers (Manual Way)
+-------------------------------------
+If you know the container IDs or names:
+docker rm <container_id_1> <container_id_2> <container_id_3>
+
+Example:
+docker rm gallant_fermat serene_stonebraker relaxed_diffie
+
+Remove All Stopped Containers (Automatic Way)
+--------------------------------------------
+Simplest command:
+docker container prune
+
+Removes all stopped containers at once.
+
+Asks for confirmation:
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N]
+
+Type y → containers deleted.
+
+Remove Using Filter (PowerShell or Linux only)
+-----------------------------------------------
+docker ps -q  
+gives onlt ID's
+
+docker rm $(docker ps -aq --filter status=exited)
+
+
+Removes all exited containers.
+Works in PowerShell or Linux Bash, not in Windows CMD.
+
+Check Remaining Containers
+After cleanup:
+docker ps -a
+
