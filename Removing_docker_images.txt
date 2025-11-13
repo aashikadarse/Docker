@@ -29,3 +29,7 @@ To Delete in Correct Order
 
 ->Now remove the image:
  docker rmi <image_name_or_id>
+  
+In powershell or linux
+->to remove all the images
+ docker rmi -f $(docker images -q)
